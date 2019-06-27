@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Switch, Route } from "react-router-dom";
-
+import { connect } from 'react-redux';
 import Shots from './components/Shots';
 import Shot from './components/Shot';
 
-function Routes ({ location }) {
+export function Routes ({ location, error }) {
   const [prevLocation, setPrevLocation] = useState(null);
 
-  if (!prevLocation)
+  if (!prevLocation && !error) {
     setPrevLocation(location);
+  }
+
+  // código de segurança para não armazenar o location de um shot
+  // inexistente.
+  if (error && error.indexOf('404') > -1 && prevLocation)
+    setPrevLocation(null);
 
   const { state = {} } = location;
   const { modal } = state;
@@ -24,4 +30,13 @@ function Routes ({ location }) {
   );
 }
 
-export default Routes;
+function mapStateToProps (state) {
+  return {
+    error: state.error_shot,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(Routes);

@@ -1,6 +1,7 @@
 import reducer from '../';
+import { mockData } from '../../testUtils';
 
-describe('REDUCER', () => {
+describe('REDUCERS', () => {
   it('should return the initial state', () =>
     expect(reducer(undefined, {})).toEqual({})
   )
@@ -8,38 +9,22 @@ describe('REDUCER', () => {
     expect(reducer({}, { type: 'FETCH_SHOTS' })).toEqual({ loading_shots: true })
   })
   it('should handle "FETCH_SHOTS_SUCCEEDED" action', () => {
-    const mockData = [
-      {
-        "animated": false,
-        "description": "Description",
-        "height": 2345,
-        "html_url": "https://dribbble.com/shots/6666726-Golden-Bitcoin-Currency",
-        "id": 6666726,
-        "images": {
-          "hidpi": "https://cdn.dribbble.com/users/3741470/screenshots/6666726/andre-francois-mckenzie-518771-unsplash.jpg",
-          "normal": "https://cdn.dribbble.com/users/3741470/screenshots/6666726/andre-francois-mckenzie-518771-unsplash_1x.jpg",
-          "one_x": "https://cdn.dribbble.com/users/3741470/screenshots/6666726/andre-francois-mckenzie-518771-unsplash_1x.jpg",
-          "two_x": "https://cdn.dribbble.com/users/3741470/screenshots/6666726/andre-francois-mckenzie-518771-unsplash_2x.jpg",
-          "four_x": "https://cdn.dribbble.com/users/3741470/screenshots/6666726/andre-francois-mckenzie-518771-unsplash_4x.jpg",
-          "six_x": "https://cdn.dribbble.com/users/3741470/screenshots/6666726/andre-francois-mckenzie-518771-unsplash_6x.jpg",
-          "teaser": "https://cdn.dribbble.com/users/3741470/screenshots/6666726/andre-francois-mckenzie-518771-unsplash_teaser.jpg"
-        },
-        "low_profile": false,
-        "tags": [
-          "illustration",
-          "photography",
-          "photoshop"
-        ],
-        "title": "Golden Bitcoin Currency",
-        "width": 3127,
-        "published_at": "2019-06-21T16:06:34Z",
-        "updated_at": "2019-06-21T16:06:34Z",
-        "attachments": [],
-        "projects": [],
-        "video": null
-      }
-    ];
     expect(reducer({}, { type: 'FETCH_SHOTS_SUCCEEDED', shots: mockData }))
       .toEqual({ shots: mockData, loading_shots: false })
+  })
+  it('should handle "FETCH_SHOTS_FAILED" action', () => {
+    expect(reducer({}, { type: 'FETCH_SHOTS_FAILED', error: "error message" }))
+      .toEqual({ error_shots: "error message", loading_shots: false })
+  })
+  it('should handle "FETCH_SHOT" action', () => {
+    expect(reducer({}, { type: 'FETCH_SHOT' })).toEqual({ loading_shot: true })
+  })
+  it('should handle "FETCH_SHOT_SUCCEEDED" action', () => {
+    expect(reducer({}, { type: 'FETCH_SHOT_SUCCEEDED', shot: { any: 'data' } }))
+      .toEqual({ shot: { any: 'data' }, loading_shot: false })
+  })
+  it('should handle "FETCH_SHOT_FAILED" action', () => {
+    expect(reducer({}, { type: 'FETCH_SHOT_FAILED', error: "error message" }))
+      .toEqual({ error_shot: "error message", loading_shot: false })
   })
 })

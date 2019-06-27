@@ -27,9 +27,16 @@ const FloatingData = styled.div`
 }
 `;
 
+// Utilizado em GIFs animados: hover no styledCard mostra a versão animada.
+// Sem hover, mostra a versão estática
 const Image = styled.img`
   height: 100%;
   width: 100%;
+  background-image: url(${props => props.static});
+  ${StyledCard}:hover & {
+    background-image: url(${props => props.animated});
+    background-size: 400px 300px;
+  }
 `;
 
 const P = styled.p`
@@ -38,16 +45,20 @@ const P = styled.p`
   font-size: ${props => props.secondary ? "14px" : "16px"};
 `;
 
-export const Card = ({ title, images, date }) =>
-  <StyledCard>
-    <picture>
-      <source media="-webkit-min-device-pixel-ratio-1.5" srcSet={images.two_x} />
-      <source srcSet={images.one_x} />
-      <img src={images.one_x} alt={title} />
-    </picture>
-    {/* <Image src={images} alt={title} /> */}
+export const Card = ({ shot }) => {
+  const { animated, images, title, published_at } = shot;
+  return <StyledCard>
+    {animated ?
+      <Image static={images.one_x} animated={images.two_x || images.normal} /> :
+      <picture>
+        <source media="-webkit-min-device-pixel-ratio-1.5" srcSet={images.two_x} />
+        <source srcSet={images.one_x} />
+        <img src={images.one_x} alt={title} />
+      </picture>
+    }
     <FloatingData>
       <P>{title}</P>
-      <P secondary>{date}</P>
+      <P secondary>{new Date(published_at).toLocaleDateString()}</P>
     </FloatingData>
   </StyledCard>
+}

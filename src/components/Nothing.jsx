@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import error from './images/error.jpg'
 
-import { resetErrors } from '../actions';
+import { fetchShots } from '../actions';
 
 const Container = styled.div`
   width: 80vw;
@@ -31,14 +30,12 @@ const Button = styled.button`
   border-radius: 3px;
 `;
 
-export const Error = ({ resetErrors, error_msg }) =>
+const Nothing = ({ fetchShots }) =>
   <Container>
-    <Img src={error} alt="Error..." />
-    <H2>Houve um erro inesperado ao processar essa solicitação.</H2>
-    <Button onClick={() => resetErrors()}>
-      Tentar novamente
+    <H2>Não há nenhum shot no seu perfil.</H2>
+    <Button onClick={() => fetchShots()}>
+      Recarregar...
     </Button>
-    <p>{error_msg}</p>
   </Container>
 
 function mapStateToProps (state) {
@@ -48,10 +45,10 @@ function mapStateToProps (state) {
 }
 
 function mapDispatchToProps (dispatch) {
-  return bindActionCreators({ resetErrors }, dispatch)
+  return bindActionCreators({ fetchShots }, dispatch)
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Error);
+)(Nothing);

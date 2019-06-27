@@ -8,7 +8,6 @@ import * as actions from '../actions';
 export function* fetchShots () {
   try {
     const shots = yield call(Api.getShots);
-    console.log(shots);
     yield put({ type: actions.FETCH_SHOTS_SUCCEEDED, shots: shots });
   } catch (e) {
     yield put({ type: actions.FETCH_SHOTS_FAILED, error: e.message });

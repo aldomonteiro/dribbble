@@ -8,29 +8,35 @@ export default class Api {
   static getShots () {
     const uri = `${API_BASE_ADDRESS}/user/shots`
     return fetch(uri, {
+      mode: 'cors',
       method: 'GET',
       headers: headers
     })
       .then(res => {
-        if (!res.ok)
-          throw Error(res.statusText);
+        if (!res.ok) {
+          let messageError = res.status ? 'Status:' + res.status : '';
+          messageError += res.statusText ? 'Status Text:' + res.statusText : '';
+          throw new Error(messageError);
+        }
         return res.json()
       })
-      .catch(err => err);
   };
 
   static getShot (id) {
     const uri = `${API_BASE_ADDRESS}/shots/${id}`
     return fetch(uri, {
+      mode: 'cors',
       method: 'GET',
       headers: headers
     })
       .then(res => {
-        if (!res.ok)
-          throw Error(res.statusText);
+        if (!res.ok) {
+          let messageError = res.status ? 'Status:' + res.status : '';
+          messageError += res.statusText ? 'Status Text:' + res.statusText : '';
+          throw new Error(messageError);
+        }
         return res.json()
       })
-      .catch(err => err);
   };
 
 }
