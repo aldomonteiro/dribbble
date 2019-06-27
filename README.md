@@ -4,7 +4,7 @@ Esse projeto lista os <i>shots</i> de um usuário postados no [Dribbble](https:/
 
 ### Sumário
 **[1. Requisitos](#requisitos)**<br>
-**[2. Resgistrando uma aplicação no Dribbble](#registrando-uma-aplicação-no-dribbble)**<br>
+**[2. Registrando uma aplicação no Dribbble](#registrando-uma-aplicação-no-dribbble)**<br>
 **[3. Executando o App localmente](#executando-o-app-localmente)**<br>
 **[4. Sobre o projeto](#sobre-o-projeto)**<br>
 **[5. Autor](#autor)**<br>
@@ -28,7 +28,7 @@ execução da aplicação.
 - [X] Utilize alguma biblioteca para lidar com fluxos assíncronos (side-effects). Recomendamos o uso da biblioteca Redux-Saga.
 - [X] Realize testes unitários. Recomendamos o uso do framework de testes Jest.
 
-## Resgistrando uma aplicação no Dribbble
+## Registrando uma aplicação no Dribbble
 
 Para executar esse aplicativo é necessário registrar um aplicativo Dribbble utilizando API v2, gerar seu token de acesso do cliente.
 
