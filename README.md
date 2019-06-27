@@ -3,9 +3,11 @@
 Esse projeto lista os <i>shots</i> de um usuário postados no [Dribbble](https://wwww.dribbble.com). Quando o usuário seleciona algum <i>shot</i>, o aplicativo mostra os seus detalhes.
 
 ### Sumário
-**[Requisitos](#requisitos)**<br>
-**[Iniciando](#iniciando)**<br>
-**[Executando o App localmente](#executando-o-app-locamente)**<br>
+**[1. Requisitos](#requisitos)**<br>
+**[2. Resgistrando uma aplicação no Dribbble](#registrando-uma-aplicação-no-dribbble)**<br>
+**[3. Executando o App localmente](#executando-o-app-localmente)**<br>
+**[4. Sobre o projeto](#sobre-o-projeto)**<br>
+**[5. Autor](#autor)**<br>
 
 ## Requisitos
 
@@ -26,15 +28,9 @@ execução da aplicação.
 - [X] Utilize alguma biblioteca para lidar com fluxos assíncronos (side-effects). Recomendamos o uso da biblioteca Redux-Saga.
 - [X] Realize testes unitários. Recomendamos o uso do framework de testes Jest.
 
-## Iniciando
-
-Para que seja possível listar os shots do Dribble é necessário registrar uma aplicação na plataforma, conforme instruções que seguem:
-
-### Resgistrando uma aplicação no Dribbble
+## Resgistrando uma aplicação no Dribbble
 
 Para executar esse aplicativo é necessário registrar um aplicativo Dribbble utilizando API v2, gerar seu token de acesso do cliente.
-
-#### Registrando seu aplicativo Dribbble
 
 - Entre na página da sua conta dribbble.com
 - Selecione Applications no menu lateral
@@ -208,82 +204,6 @@ const Shots = ({ fetchShots, shots = [], loading, error }) => {
 
 Note que a segunda opção é mais concisa (menos linhas de código), no entanto, é menos legível e mais sucetível a erros. Por esse motivo, escolhi a primeira abordagem, com mais linhas de código, em prol da legibilidade e manutenibilidade do código.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Autor
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Runs unit tests using Jest.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-
-### Organização dos arquivos de teste
-
-Jest pesquisa por arquivos de teste com as seguintes convenções:
-
-- Arquivos com sufixo .js dentro de pastas chamadas __tests__.
-- Arquivos com sufixo .test.js
-- Arquivos com sufixo .specs.js
-
-Os desenvolvedores do Create-React-App [recomendam que os arquivos de teste estejam próximos ao código que eles testam](https://facebook.github.io/create-react-app/docs/running-tests#filename-conventions) para que os imports relativos fiquem mais curtos. Por isso, decidi utilizar a estrutura de subpastas chamadas __tests__ dentro da pasta na qual está o código testado, pois assim não haverá um grande número de arquivos na mesma pasta, caso optasse por manter arquivos .test.js na mesma pasta dos código do programa.
-
+Aldo Monteiro (aldomonteiro at gmail dot com)
