@@ -1,8 +1,34 @@
-### Requisitos
+# Projeto
 
-- [ ] A aplicação deve listar os shots populares do serviço (Não foi possível).
-- [ ] Ao clicar em um shot deverá ser exibida uma págna de detalhes com título, mídia (imagem ou vídeo ), descrição, tags e data de publicação.
+Esse projeto lista os <i>shots</i> de um usuário postados no [Dribbble](https://wwww.dribbble.com). Quando o usuário seleciona algum <i>shot</i>, o aplicativo mostra os seus detalhes.
+
+### Sumário
+**[Requisitos](#requisitos)**<br>
+**[Iniciando](#iniciando)**<br>
+**[Executando o App localmente](#executando-o-app-locamente)**<br>
+
+## Requisitos
+
+Executando o App localmente
+
+### Sobre a aplicação
+
+- [ ] A aplicação deve listar os shots populares do serviço (Não foi possível - A API V2 da Dribbble não permite que novas aplicações listem os shots populares do serviço).
+- [X] Ao clicar em um shot deverá ser exibida uma págna de detalhes com título, mídia (imagem ou vídeo ), descrição, tags e data de publicação.
 - [X] A página de detalhes de cada shot deverá ser acessível diretamente através de uma URL.
+
+### Requisitos técnicos
+
+- [X] O projeto deverá incluir um arquivo README.md, instruindo o passo a passo para a
+execução da aplicação.
+- [X] Utilize a biblioteca React na construção da aplicação.
+- [X] Utilize a biblioteca Redux para gerenciar o estado da aplicação.
+- [X] Utilize alguma biblioteca para lidar com fluxos assíncronos (side-effects). Recomendamos o uso da biblioteca Redux-Saga.
+- [X] Realize testes unitários. Recomendamos o uso do framework de testes Jest.
+
+## Iniciando
+
+Para que seja possível listar os shots do Dribble é necessário registrar uma aplicação na plataforma, conforme instruções que seguem:
 
 ### Resgistrando uma aplicação no Dribbble
 
@@ -50,19 +76,71 @@ REACT_APP_API_TOKEN=ACCESS_TOKEN
 Substitua ACCESS_TOKEN pelo token recebido anteriormente.
 
 
-[TODO]
+## Executando o App localmente
 
-### Executar o App localmente
+Clone o repositório em uma pasta local:
 
-[TODO]
+```
+git clone https://github.com/aldomonteiro/dribbble
+```
+
+Instale as dependências necessárias:
+
+```
+cd dribble
+yarn
+```
+Execute a aplicação:
+
+```
+yarn start
+```
+
+O projeto estará ativo no endereço `http://localhost:3000`.
+
+### Executar os testes
+
+Para executar os testes basta executar:
+
+```
+yarn test
+```
+
+A biblioteca Jest foi utilizada. Os testes serão mostrados no Terminal e ao término da execução será mostrado um relatório de cobertura dos testes.
+
+## Sobre o projeto
+
+### Create-React-App
+
+O projeto foi iniciado com [Create React App](https://github.com/facebook/create-react-app), que permite o início do desenvolvimento com nenhuma configuração. O que vem incluído:
+
+- Suporte a React, JSX, ES6, TypeScript e Flow.
+- Executor de testes unitários interativo com relatórios de cobertura de testes.
+- Um servidor de desenvolvimento ativo que avisa sobre erros comuns.
+- Um script de construção para agrupar JS, CSS e imagens para produção, com hashes e sourcemaps.
+- Atualizações sem complicações para as ferramentas acima com uma única dependência.
+
+### Organização dos arquivos de teste
+
+Jest pesquisa por arquivos de teste com as seguintes convenções:
+
+- Arquivos com sufixo .js dentro de pastas chamadas __tests__.
+- Arquivos com sufixo .test.js
+- Arquivos com sufixo .specs.js
+
+Os desenvolvedores do Create-React-App [recomendam que os arquivos de teste estejam próximos ao código que eles testam](https://facebook.github.io/create-react-app/docs/running-tests#filename-conventions) para que os imports relativos fiquem mais curtos. Por isso, decidi utilizar a estrutura de subpastas chamadas __tests__ dentro da pasta na qual está o código testado, pois assim não haverá um grande número de arquivos na mesma pasta, caso optasse por manter arquivos .test.js na mesma pasta dos código do programa.
+
+### Gerenciamento de estados e side-effects.
+
+O gerenciamento de estados é feito através da biblioteca Redux. Os arquivos relevantes estão nas pastas `src/actions` e `src/reducers`.
+
+Os side-effects iniciados pela API que busca os dados do Dribbble são gerenciados pela biblioteca Redux-Saga. Os `sagas` estão definidos na pasta `src/sagas`.
+
+O arquivo `store/configureStore` configura a `store` de todos os estados da aplicação e aplica o middleware `Redux-Saga` ao projeto.
 
 ### Estilos
 
-Os estilos do projeto utilizam [Styled-Components](https://www.styled-components.com/).
-
-#### Motivação
-
-`Styled-Components` possibilita:
+Os estilos do projeto utilizam [Styled-Components](https://www.styled-components.com/). `Styled-Components` possibilita:
 
 - Crítica automática do CSS: controla quais componentes são renderizados em uma página e insere seus estilos e nada mais, de forma totalmente automática. Combinado com a divisão de código, isso significa  carregar a menor quantidade de código necessária.
 - Fim dos bugs de nome de classe: nomes de classe exclusivos são gerados para os estilos. Sem preocupação com duplicação, sobreposição ou erros ortográficos.
@@ -129,10 +207,6 @@ const Shots = ({ fetchShots, shots = [], loading, error }) => {
 ```
 
 Note que a segunda opção é mais concisa (menos linhas de código), no entanto, é menos legível e mais sucetível a erros. Por esse motivo, escolhi a primeira abordagem, com mais linhas de código, em prol da legibilidade e manutenibilidade do código.
-
-
-
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -205,7 +279,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ### Organização dos arquivos de teste
 
-Jest pesquisará por arquivos de teste com as seguintes convenções:
+Jest pesquisa por arquivos de teste com as seguintes convenções:
 
 - Arquivos com sufixo .js dentro de pastas chamadas __tests__.
 - Arquivos com sufixo .test.js

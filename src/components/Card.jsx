@@ -47,6 +47,7 @@ const P = styled.p`
 
 export const Card = ({ shot }) => {
   const { animated, images, title, published_at } = shot;
+  const [weekDay, monthName, day, year] = new Date(published_at).toDateString().split(' ');
   return <StyledCard>
     {animated ?
       <Image static={images.one_x} animated={images.two_x || images.normal} /> :
@@ -58,7 +59,7 @@ export const Card = ({ shot }) => {
     }
     <FloatingData>
       <P>{title}</P>
-      <P secondary>{new Date(published_at).toLocaleDateString()}</P>
+      <P secondary>{`${monthName} ${day}, ${year}`}</P>
     </FloatingData>
   </StyledCard>
 }

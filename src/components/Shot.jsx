@@ -9,6 +9,7 @@ import Loading from './Loading';
 import Error from './Error';
 
 import tag from './images/tag.svg';
+import pub_date from './images/pub-date.svg';
 import ResponsiveImg from './ResponsiveImg';
 
 // CSS para mostrar como uma página comum caso
@@ -45,11 +46,20 @@ const DataContainer = styled.div`
   height: auto;
 `;
 
-const TagsContainer = styled.div`
+const SideInfoContainer = styled.div`
   color: #999;
   width: 25%;
   align-items: center;
 `;
+
+const TagsContainer = styled.div`
+  align-items: center;
+`;
+
+const DateContainer = styled.div`
+  align-items: center;
+`;
+
 
 const InfoContainer = styled.div`
   height: 40%;
@@ -106,6 +116,8 @@ export const Shot = ({ match, location, fetchShot, shot, loading, error }) => {
   if (!shot || loading)
     return wrapper(<Loading />);
 
+  const [weekDay, monthName, day, year] = new Date(shot.published_at).toDateString().split(' ');
+
   return wrapper(
     <DataContainer>
       <Text>
@@ -114,10 +126,16 @@ export const Shot = ({ match, location, fetchShot, shot, loading, error }) => {
       <ResponsiveImg shot={shot} />
       <InfoContainer>
         <Text dangerouslySetInnerHTML={{ __html: shot.description }} />
-        <TagsContainer>
-          <img src={tag} alt="Tags" />
-          {shot.tags && shot.tags.map(tag => <p key={tag}>{tag}</p>)}
-        </TagsContainer>
+        <SideInfoContainer>
+          <TagsContainer>
+            <img src={tag} alt="Tags" />
+            {shot.tags && shot.tags.map(tag => <p key={tag}>{tag}</p>)}
+          </TagsContainer>
+          <DateContainer>
+            <img src={pub_date} alt="Published Date" />
+            <p>{`${monthName} ${day}, ${year}`}</p>
+          </DateContainer>
+        </SideInfoContainer>
       </InfoContainer>
     </DataContainer>);
 }
