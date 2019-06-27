@@ -1,3 +1,9 @@
+### Requisitos
+
+- [ ] A aplicação deve listar os shots populares do serviço (Não foi possível).
+- [ ] Ao clicar em um shot deverá ser exibida uma págna de detalhes com título, mídia (imagem ou vídeo ), descrição, tags e data de publicação.
+- [x] A página de detalhes de cada shot deverá ser acessível diretamente através de uma URL.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -14,8 +20,7 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs unit tests using Jest.
 
 ### `npm run build`
 
@@ -66,3 +71,15 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### Organização dos arquivos de teste
+
+Jest pesquisará por arquivos de teste com as seguintes convenções:
+
+- Arquivos com sufixo .js dentro de pastas chamadas __tests__.
+- Arquivos com sufixo .test.js
+- Arquivos com sufixo .specs.js
+
+Os desenvolvedores do Create-React-App [recomendam que os arquivos de teste estejam próximos ao código que eles testam](https://facebook.github.io/create-react-app/docs/running-tests#filename-conventions) para que os imports relativos fiquem mais curtos. Por isso, decidi utilizar a estrutura de subpastas chamadas __tests__ dentro da pasta na qual está o código testado, pois assim não haverá um grande número de arquivos na mesma pasta, caso optasse por manter arquivos .test.js na mesma pasta dos código do programa.
+
